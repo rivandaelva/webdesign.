@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Class Attendance Dashboard</title>
+  <meta name="viewport"
+  content="width=device-width,initial-scale=1" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+    }
+
+    .dashboard-container {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      min-height: 100vh;
+    }
+
+    .sidebar {
+      background-color: rgb(128, 128, 204);
+      padding: 20px;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .sidebar a {
+      text-decoration: none;
+      color: #ffffff;
+      display: flex;
+      margin-bottom: 10px;
+      padding: 20px;
+    }
+   
+    .sidebar i {
+      margin-right: 10px;
+    }
+
+    .sidebar a {
+      font-size: 14px;
+      padding: 10px;
+    }
+
+    .main {
+      position: relative;
+      padding: 20px;
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    .main-top {
+      display: flex;
+      width: 100%;
+    }
+
+    .main-top i {
+      position: absolute;
+      right: 0;
+      margin: 10px 30px;
+      color: rgb(110, 109, 109);
+      cursor: pointer;
+    }
+
+    .main .users {
+      display: flex;
+      width: 100%;
+    }
+
+    .users .card {
+      width: 25%;
+      margin: 10px;
+      background: #fff;
+      text-align: center;
+      border-radius: 10px;
+      padding: 10px;
+      box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+    }
+
+    .users .card img {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+    }
+
+    .users .card h4 {
+      text-transform: uppercase;
+    }
+
+    .users .card p {
+      font-size: 12px;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+    }
+
+    .users table {
+      margin:  auto;
+    }
+
+    .users .per span {
+      padding: 5px;
+      border-radius: 10px;
+      background: rgb(223, 223, 223);
+    }
+
+    .users td {
+      font-size: 14px;
+      padding-right: 15px;
+    }
+
+    .users .card button {
+      width: 100%;
+      margin-top: 8px;
+      padding: 7px;
+      cursor: pointer;
+      border-radius: 10px;
+      background: transparent;
+      border: 1px solid #010f07;
+    }
+
+    .users .card button:hover {
+      background: #944ad4;
+      color: #fff;
+      transition: 0.5s;
+    }
+
+    .attendance-list {
+      width: 98%;
+      padding: 10px;
+      margin-top: 10px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 20px 35px rgb(189, 181, 181);
+    }
+
+    .table {
+      border-collapse: collapse;
+      margin: 25px 0;
+      font-size: 15px;
+      width: 100%;
+      overflow: hidden;
+      border-radius: 5px 5px 0 0;
+    }
+
+    table thead tr {
+      color: white;
+      background: #944ad4;
+      text-align: left;
+      font-weight: bold;
+    }
+
+    .table th,
+    .table td {
+      padding: 12px 15px;
+    }
+
+    .active tr:hover {
+      color: #8d58b6;
+    }
+
+    .table button {
+      padding: 6px 20px;
+      border-radius: 10px;
+      cursor: pointer;
+      background: transparent;
+      border: 1px solid #000e06;
+    }
+
+    .table button:hover {
+      background: #9d4ad4;
+      color: #fff;
+    }
+
+    .selected {
+      background-color: #f0f0f0; /* Warna latar belakang untuk kelas pemilihan */
+    }
+  </style>
+  <!-- Masukkan link eksternal seperti font-awesome di sini -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+<div class="dashboard-container">
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <ul>
+      <li><a href="#" class="logo">
+        <i class="fas fa-chalkboard-teacher"></i>
+        <span class="nav-item">Teacher</span>
+      </a></li>
+      <li><a href="#">
+        <i class="fas fa-home"></i>
+        <span class="nav-item">Home</span>
+      </a></li>
+      <li><a href="#">
+        <i class="fas fa-chart-pie"></i>
+        <span class="nav-item">Class Statistics</span>
+      </a></li>
+      <li><a href="#">
+        <i class="fas fa-list-alt"></i>
+        <span class="nav-item">Attendance</span>
+      </a></li>
+      <li><a href="#">
+        <i class="fas fa-cogs"></i>
+        <span class="nav-item">Setting</span>
+      </a></li>
+      <li><a href="#" class="logout">
+        <i class="fas fa-sign-out-alt"></i>
+        <span class="nav-item">Exit</span>
+      </a></li>
+    </ul>
+  </div>
+
+  <!-- Main Content -->
+  <section class="main">
+    <div class="main-top">
+      <h1>Class Attendance</h1>
+      <i class="fas fa-user-cog"></i>
+    </div>
+    <div class="users">
+      <div class="card">
+        <img src="manda.jpeg">
+        <h4>Lumatau Rivanda Elva</h4>
+        <p>Web Design</p>
+        <div class="per">
+          <table>
+            <tr>
+              <td><span>18</span></td>
+              <td><span>3</span></td>
+              <td><span>5</span></td>
+            </tr>
+            <tr>
+              <td>Present</td>
+              <td>Absent</td>
+              <td>Late</td>
+            </tr>
+          </table>
+        </div>
+        <button>Email</button>
+      </div>
+  <section class="main">
+    <div class="main-top">
+      <h1>Class Attendance</h1>
+      <i class="fas fa-user-cog"></i>
+    </div>
+      <div class="users">
+        <div class="card">
+          <img src="shafara.jpeg">
+          <h4>Subaidi Brainy Shafara</h4>
+          <p>Web Design</p>
+          <div class="per">
+            <table>
+             <tr>
+                  <td><span>20</span></td>
+                  <td><span>3</span></td>
+                  <td><span>5</span></td>
+                </tr>
+                <tr>
+                  <td>Present</td>
+                  <td>Absent</td>
+                  <td>Late</td>
+                </tr>
+              </table>
+            </div>
+            <button>Email</button>
+          </div>
+      <!-- Similar cards for other students
